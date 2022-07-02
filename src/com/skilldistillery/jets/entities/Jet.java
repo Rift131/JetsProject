@@ -25,7 +25,9 @@ public abstract class Jet {
 	}
 	
 	public void fly() {
-		// standard sysout for when an aircraft flies
+		// standard sysout of flying message, range for when an aircraft flies
+		double sortieDuration = this.range / this.speed;
+		System.out.println(this.model + " maintaining a max speed of " + this.speed + " and a range of " + this.range + " can fly for a duration of " + (Math.round(sortieDuration)) + " minutes.");
 	}
 	
 	public double getSpeedInMach(double rawSpeed) {
@@ -109,8 +111,8 @@ public abstract class Jet {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Jet [type=").append(type).append(", model=").append(model).append(", speed=").append(speed)
-				.append(", range=").append(range).append(", price=").append(price).append("]");
+		builder.append("Type: ").append(type).append(", Model: ").append(model).append(", Speed: ").append(speed)
+				.append(", Range: ").append(range).append(", Price: ").append(price);
 		return builder.toString();
 	}
 	

@@ -10,6 +10,12 @@ import javax.jws.Oneway;
 public class Airfield {
 	// private List<Jet> fleet = new ArrayList<Jet>();
 	private List<Jet> fleet = new ArrayList<Jet>();
+//	private Bomber bomber = new Bomber();
+//	private Fighter fighter = new Fighter();
+//	private ISR iSR = new ISR();
+//	private Cargo cargo = new Cargo();
+//	private Tanker tanker = new Tanker();
+//	private 
 
 	public Airfield() {
 
@@ -57,14 +63,23 @@ public class Airfield {
 			System.err.println(e);
 
 		}
-		System.out.println(fleet);
 		return fleet;
 	}
-
+// fly method
+	public void scarmbleAllJets() {
+		airfieldPopulate();
+		for (Jet aircraft : fleet) {
+			aircraft.fly();
+		}
+	}
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Current fleet of aircraft:").append(fleet).append(".");
+		int index = 0;
+		for (int i = 0; i < fleet.size(); i++) {
+		builder.append("Acft No. ").append(index +1).append(" ").append(fleet.get(index)).append("\n");
+		index++;
+		}
 		return builder.toString();
 	}
 

@@ -1,6 +1,7 @@
 package com.skilldistillery.jets.app;
 
-import java.util.*;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
 import com.skilldistillery.jets.entities.Airfield;
 
@@ -34,7 +35,7 @@ public class JetsApplication {
 				// display the menu to the user
 				System.out.println("**********JETS MENU**********");
 				System.out.println("* 1. List Fleet             *");
-				System.out.println("* 2. Fly All Jets           *");
+				System.out.println("* 2. Scramble All Jets      *");
 				System.out.println("* 3. View Fastest Jet       *");
 				System.out.println("* 4. View Longest Range Jet *");
 				System.out.println("* 5. Launch Support Sortie  *");
@@ -100,6 +101,10 @@ public class JetsApplication {
 		System.out.println(airfield.toString());
 	}
 
+	private void flyAllJets() {
+		// TODO Auto-generated method stub
+		airfield.scarmbleAllJets();
+	}
 	private void quit() {
 		// TODO Auto-generated method stub
 
@@ -135,10 +140,6 @@ public class JetsApplication {
 
 	}
 
-	private void flyAllJets() {
-		// TODO Auto-generated method stub
-
-	}
 
 	// fly all jets method
 
