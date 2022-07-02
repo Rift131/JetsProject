@@ -86,6 +86,17 @@ public class Airfield {
 		return fastestAircraft;
 	}
 
+	public Jet viewLongestRangeJet() {
+		int longestRange = fleet.get(0).getRange();
+		Jet enduranceAircraft = fleet.get(0);
+		for (int i = 1; i < fleet.size(); i++) {
+			if (fleet.get(i).getRange() > longestRange) {
+				longestRange = fleet.get(i).getRange();
+				enduranceAircraft = fleet.get(i);
+			}
+	}
+		return enduranceAircraft;
+	}
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();

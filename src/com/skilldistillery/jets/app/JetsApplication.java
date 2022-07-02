@@ -40,8 +40,8 @@ public class JetsApplication {
 				System.out.println("* 2. Scramble All Jets      *");
 				System.out.println("* 3. View Fastest Jet       *");
 				System.out.println("* 4. View Longest Range Jet *");
-				System.out.println("* 5. Launch Support Sortie  *");
-				System.out.println("* 6. Launch Strike Sortie   *");
+				System.out.println("* 5. Launch Support Sorties *");
+				System.out.println("* 6. Launch Strike Sorties  *");
 				System.out.println("* 7. Acquire New Aircraft   *");
 				System.out.println("* 8. Decomission Aircraft   *");
 				System.out.println("* 9. Quit                   *");
@@ -108,8 +108,14 @@ public class JetsApplication {
 	}
 	private void viewFastestJet() {
 		// TODO Auto-generated method stub
-		airfield.viewFastestJet();
+		//airfield.viewFastestJet();
 		System.out.println(airfield.viewFastestJet().toString());
+	}
+	private void viewLongestRangeJet() {
+		// TODO Auto-generated method stub
+		//airfield.viewLongestRangeJet();
+		System.out.println(airfield.viewLongestRangeJet().toString());
+		
 	}
 	private void quit() {
 		// TODO Auto-generated method stub
@@ -136,10 +142,6 @@ public class JetsApplication {
 
 	}
 
-	private void viewLongestRangeJet() {
-		// TODO Auto-generated method stub
-
-	}
 
 
 
