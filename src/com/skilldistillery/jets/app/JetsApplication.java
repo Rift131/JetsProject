@@ -17,6 +17,8 @@ public class JetsApplication {
 	public static void main(String[] args) {
 		// instantiate an instance of the app
 		JetsApplication jA = new JetsApplication();
+		// instantiate the airfield
+		jA.airfield.airfieldPopulate();
 		// private invoke a run method
 		jA.run();
 
@@ -97,13 +99,17 @@ public class JetsApplication {
 	// list fleet methods
 	private void listFleet() {
 		// TODO Auto-generated method stub
-		airfield.airfieldPopulate();
 		System.out.println(airfield.toString());
 	}
 
 	private void flyAllJets() {
 		// TODO Auto-generated method stub
-		airfield.scarmbleAllJets();
+		airfield.scrambleAllJets();
+	}
+	private void viewFastestJet() {
+		// TODO Auto-generated method stub
+		airfield.viewFastestJet();
+		System.out.println(airfield.viewFastestJet().toString());
 	}
 	private void quit() {
 		// TODO Auto-generated method stub
@@ -135,10 +141,6 @@ public class JetsApplication {
 
 	}
 
-	private void viewFastestJet() {
-		// TODO Auto-generated method stub
-
-	}
 
 
 	// fly all jets method

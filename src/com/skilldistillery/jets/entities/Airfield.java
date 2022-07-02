@@ -19,6 +19,7 @@ public class Airfield {
 
 	public Airfield() {
 
+		
 	}
 
 	// airfieldPopulate method
@@ -65,20 +66,33 @@ public class Airfield {
 		}
 		return fleet;
 	}
+
 // fly method
-	public void scarmbleAllJets() {
-		airfieldPopulate();
+	public void scrambleAllJets() {
 		for (Jet aircraft : fleet) {
 			aircraft.fly();
 		}
 	}
+
+	public Jet viewFastestJet() {
+		double greatestSpeed = fleet.get(0).getSpeed();
+		Jet fastestAircraft = fleet.get(0);
+		for (int i = 1; i < fleet.size(); i++) {
+			if (fleet.get(i).getSpeed() > greatestSpeed) {
+				greatestSpeed = fleet.get(i).getSpeed();
+				fastestAircraft = fleet.get(i);
+			}
+		}
+		return fastestAircraft;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		int index = 0;
 		for (int i = 0; i < fleet.size(); i++) {
-		builder.append("Acft No. ").append(index +1).append(" ").append(fleet.get(index)).append("\n");
-		index++;
+			builder.append("Acft No. ").append(index + 1).append(" ").append(fleet.get(index)).append("\n");
+			index++;
 		}
 		return builder.toString();
 	}
