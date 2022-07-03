@@ -1,6 +1,6 @@
 package com.skilldistillery.jets.entities;
 
-public class Bomber extends Jet implements WeaponsLoadOut {
+public class Bomber extends Jet {
 
 	public Bomber() {
 		super();
@@ -11,15 +11,29 @@ public class Bomber extends Jet implements WeaponsLoadOut {
 		super(type, model, speed, range, price);
 		// TODO Auto-generated constructor stub
 	}
+// Interface Implementation
+
+	
 
 	@Override
-	public void weaponStatus() {
+	public void undetectable() {
 		// TODO Auto-generated method stub
-		System.out.println("Bombs loaded.");
+		System.out.println("BOMBER REPORT: Undetectable by enemy radar, entering enemy air space.");
+	}
+
+	@Override
+	public void strikeDelivered() {
+		// TODO Auto-generated method stub
+		System.out.println("BOMBER REPORT: Bombs on target, returning to base.");
+	}
+
+	@Override
+	public void supportRendered() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	
 	
-	// override the fly method of jets & sysout relative message to the jet details and the amount of time the jet can fly until it runs out of fuel (based on speed and range)}
 
 }

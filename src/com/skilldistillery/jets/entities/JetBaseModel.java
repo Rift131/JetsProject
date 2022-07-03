@@ -12,4 +12,22 @@ public class JetBaseModel extends Jet {
 		// TODO Auto-generated constructor stub
 	}
 
+	@Override
+	public void undetectable() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void strikeDelivered() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void supportRendered() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

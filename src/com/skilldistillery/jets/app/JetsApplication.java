@@ -35,6 +35,7 @@ public class JetsApplication {
 			int userMenuChoice;
 			try {
 				// display the menu to the user
+				System.out.println("\n");
 				System.out.println("**********JETS MENU**********");
 				System.out.println("* 1. List Fleet             *");
 				System.out.println("* 2. Scramble All Jets      *");
@@ -109,13 +110,21 @@ public class JetsApplication {
 	private void viewFastestJet() {
 		// TODO Auto-generated method stub
 		//airfield.viewFastestJet();
-		System.out.println(airfield.viewFastestJet().toString());
+		System.out.println("FASTEST AIRCRAFT: " + airfield.viewFastestJet().toString());
 	}
 	private void viewLongestRangeJet() {
 		// TODO Auto-generated method stub
 		//airfield.viewLongestRangeJet();
-		System.out.println(airfield.viewLongestRangeJet().toString());
+		System.out.println("GREATEST RANGE AIRCRAFT: " + airfield.viewLongestRangeJet().toString());
 		
+	}
+	private void launchSupportSortie() {
+		// TODO Auto-generated method stub
+		airfield.launchSupportSorties();
+	}
+	private void launchStrikeSortie() {
+		// TODO Auto-generated method stub
+		airfield.launchStrikeSorties();
 	}
 	private void quit() {
 		// TODO Auto-generated method stub
@@ -132,15 +141,7 @@ public class JetsApplication {
 
 	}
 
-	private void launchStrikeSortie() {
-		// TODO Auto-generated method stub
 
-	}
-
-	private void launchSupportSortie() {
-		// TODO Auto-generated method stub
-
-	}
 
 
 

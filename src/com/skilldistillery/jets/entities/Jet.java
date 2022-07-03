@@ -2,7 +2,7 @@ package com.skilldistillery.jets.entities;
 
 import java.util.Objects;
 
-public abstract class Jet {
+public abstract class Jet implements Stealthy, StrikeSortie, SupportSortie{
 // follow UML for the fields and methods
 	//with 5 prepopulated aircraft, the current count would be 5
 	private static int COUNT = 4;

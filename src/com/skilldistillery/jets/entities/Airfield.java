@@ -97,6 +97,20 @@ public class Airfield {
 	}
 		return enduranceAircraft;
 	}
+	
+	public void launchSupportSorties() {
+		for (Jet supportAcft : fleet) {
+			supportAcft.supportRendered();
+		}
+	}
+	
+	public void launchStrikeSorties() {
+		for (Jet strikeAcft : fleet) {
+			strikeAcft.undetectable();
+			strikeAcft.strikeDelivered();
+		}
+	}
+	
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
