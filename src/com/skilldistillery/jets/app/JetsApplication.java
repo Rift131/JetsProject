@@ -107,44 +107,185 @@ public class JetsApplication {
 		// TODO Auto-generated method stub
 		airfield.scrambleAllJets();
 	}
+
 	private void viewFastestJet() {
 		// TODO Auto-generated method stub
-		//airfield.viewFastestJet();
+		// airfield.viewFastestJet();
 		System.out.println("FASTEST AIRCRAFT: " + airfield.viewFastestJet().toString());
 	}
+
 	private void viewLongestRangeJet() {
 		// TODO Auto-generated method stub
-		//airfield.viewLongestRangeJet();
+		// airfield.viewLongestRangeJet();
 		System.out.println("GREATEST RANGE AIRCRAFT: " + airfield.viewLongestRangeJet().toString());
-		
+
 	}
+
 	private void launchSupportSortie() {
 		// TODO Auto-generated method stub
 		airfield.launchSupportSorties();
 	}
+
 	private void launchStrikeSortie() {
 		// TODO Auto-generated method stub
 		airfield.launchStrikeSorties();
 	}
-	private void quit() {
-		// TODO Auto-generated method stub
-
-	}
 
 	private void acquireNewAircraft() {
-		// TODO Auto-generated method stub
+		userSetType();
+		
+	}
 
+	private void userSetType() {
+		// list the variables the user will assign
+		String usersType = "";
+
+		// TODO Auto-generated method stub
+		boolean validUserInput = false;
+		while (!validUserInput) {
+			int userMenuChoice;
+			try {
+				System.out.println("\n");
+				System.out.println("*******ACFT TYPE CHOICES*****");
+				System.out.println("* 1. Bomber                 *");
+				System.out.println("* 2. Fighter                *");
+				System.out.println("* 3. Tanker                 *");
+				System.out.println("* 4. ISR                    *");
+				System.out.println("* 5. Cargo                  *");
+				System.out.println("* 6. General Jet Aircraft   *");
+				System.out.println("* 7. Return to Main Menu    *");
+				System.out.println("* 8. Quit                   *");
+				System.out.println("*****************************");
+				System.out.println("\nPlease enter a number from the menu.");
+
+				userMenuChoice = userInput.nextInt();
+				userInput.nextLine();
+				validUserInput = true;
+
+				switch (userMenuChoice) {
+				case 1:
+					usersType = "Bomber";
+					break;
+				case 2:
+					usersType = "Fighter";
+					break;
+				case 3:
+					usersType = "Tanker";
+					break;
+				case 4:
+					usersType = "ISR";
+					break;
+				case 5:
+					usersType = "Cargo";
+					break;
+				case 6:
+					usersType = "General Jet Aircraft";
+					break;
+				case 7:
+					run();
+					break;
+				case 8:
+					quit();
+					break;
+				default:
+					System.out.println("The number entered did not match the menu choices. Please try again.");
+					acquireNewAircraft();
+				}
+			} catch (InputMismatchException e) {
+				System.out.println("Invalid Input.");
+				userInput.nextLine();
+				validUserInput = false;
+				acquireNewAircraft();
+			}
+		}
+		// reset the boolean value for the next time the menu is invoked
+		validUserInput = false;
+		userSetModel(usersType);
+	}
+
+	private void userSetModel(String type) {
+		String usersModel = "";
+		boolean validUserInput = false;
+		while (!validUserInput) {
+			try {
+				System.out.println("Please enter the model of the aircraft.");
+				usersModel = userInput.nextLine();
+				validUserInput = true;
+			} catch (InputMismatchException e) {
+				System.out.println("Invalid Input.");
+				userInput.nextLine();
+				validUserInput = false;
+				userSetModel(type);
+			}
+		}
+		userSetSpeed(type, usersModel);
+	}
+
+	private void userSetSpeed(String type, String model) {
+		double usersSpeed = 0;
+		boolean validUserInput = false;
+		while (!validUserInput) {
+			try {
+				System.out.println("Please enter the speed of the aircraft.");
+				usersSpeed = userInput.nextDouble();
+				validUserInput = true;
+			} catch (InputMismatchException e) {
+				System.out.println("Invalid Input.");
+				userInput.nextLine();
+				validUserInput = false;
+				userSetSpeed(type, model);
+			}
+		}
+		userSetRange(type, model, usersSpeed);
+	}
+
+	private void userSetRange(String type, String model, double speed) {
+		int usersRange = 0;
+		boolean validUserInput = false;
+		while (!validUserInput) {
+			try {
+				System.out.println("Please enter the range of the aircraft.");
+				usersRange = userInput.nextInt();
+				validUserInput = true;
+			} catch (InputMismatchException e) {
+				System.out.println("Invalid Input. Please enter a whole number.");
+				userInput.nextLine();
+				validUserInput = false;
+				userSetRange(type, model, speed);
+			}
+		}
+		userSetPrice(type, model, speed, usersRange);
+	}
+
+	private void userSetPrice(String type, String model, double speed, int range) {
+		long usersPrice = 0;
+		boolean validUserInput = false;
+		while (!validUserInput) {
+			try {
+				System.out.println("Please enter the price of the aircraft (numbers only).");
+				usersPrice = userInput.nextLong();
+				validUserInput = true;
+			} catch (InputMismatchException e) {
+				System.out.println("Invalid Input. Please enter a whole number.");
+				userInput.nextLine();
+				validUserInput = false;
+				userSetPrice(type, model, speed, range);
+			}
+		}
+		airfield.acquisitionNewAircraft(type, model, speed, range, usersPrice);
 	}
 
 	private void decomissionAircraft() {
 		// TODO Auto-generated method stub
 
+		// try / catch && instanceof to check if an instance of what the user wants to
+		// delete (specific concrete class) exists (.getSimpleName())
 	}
 
+	private void quit() {
+		// TODO Auto-generated method stub
 
-
-
-
+	}
 
 	// fly all jets method
 

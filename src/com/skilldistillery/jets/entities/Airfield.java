@@ -10,12 +10,7 @@ import javax.jws.Oneway;
 public class Airfield {
 	// private List<Jet> fleet = new ArrayList<Jet>();
 	private List<Jet> fleet = new ArrayList<Jet>();
-//	private Bomber bomber = new Bomber();
-//	private Fighter fighter = new Fighter();
-//	private ISR iSR = new ISR();
-//	private Cargo cargo = new Cargo();
-//	private Tanker tanker = new Tanker();
-//	private 
+
 
 	public Airfield() {
 
@@ -33,27 +28,27 @@ public class Airfield {
 				// set the parameters of the aircraft to their respective types and feed into
 				// the fleet array
 				String type = eachAcft[0];
-				String make = eachAcft[1];
+				String model = eachAcft[1];
 				double speed = Double.parseDouble(eachAcft[2]);
 				int range = Integer.parseInt(eachAcft[3]);
 				long price = Long.parseLong(eachAcft[4]);
 				if (type.equals("Bomber")) {
-					Bomber bomber = new Bomber(type, make, speed, range, price);
+					Bomber bomber = new Bomber(type, model, speed, range, price);
 					fleet.add(bomber);
 				} else if (type.equals("Fighter")) {
-					Fighter fighter = new Fighter(type, make, speed, range, price);
+					Fighter fighter = new Fighter(type, model, speed, range, price);
 					fleet.add(fighter);
 				} else if (type.equals("ISR")) {
-					ISR iSR = new ISR(type, make, speed, range, price);
+					ISR iSR = new ISR(type, model, speed, range, price);
 					fleet.add(iSR);
 				} else if (type.equals("Cargo")) {
-					Cargo cargo = new Cargo(type, make, speed, range, price);
+					Cargo cargo = new Cargo(type, model, speed, range, price);
 					fleet.add(cargo);
 				} else if (type.equals("Tanker")) {
-					Tanker tanker = new Tanker(type, make, speed, range, price);
+					Tanker tanker = new Tanker(type, model, speed, range, price);
 					fleet.add(tanker);
-				} else if (type.equals("JetBaseModel")) {
-					JetBaseModel defaultAcft = new JetBaseModel(type, make, speed, range, price);
+				} else if (type.equals("General Jet Aircraft")) {
+					JetBaseModel defaultAcft = new JetBaseModel(type, model, speed, range, price);
 					fleet.add(defaultAcft);
 				} else {
 					System.out.println("Aircraft type not recognized.");
@@ -109,6 +104,31 @@ public class Airfield {
 			strikeAcft.undetectable();
 			strikeAcft.strikeDelivered();
 		}
+	}
+	
+	public void acquisitionNewAircraft(String type, String model, double speed, int range, long price) {
+		if (type.equals("Bomber")) {
+			Bomber bomber = new Bomber(type, model, speed, range, price);
+			fleet.add(bomber);
+		} else if (type.equals("Fighter")) {
+			Fighter fighter = new Fighter(type, model, speed, range, price);
+			fleet.add(fighter);
+		} else if (type.equals("ISR")) {
+			ISR iSR = new ISR(type, model, speed, range, price);
+			fleet.add(iSR);
+		} else if (type.equals("Cargo")) {
+			Cargo cargo = new Cargo(type, model, speed, range, price);
+			fleet.add(cargo);
+		} else if (type.equals("Tanker")) {
+			Tanker tanker = new Tanker(type, model, speed, range, price);
+			fleet.add(tanker);
+		} else if (type.equals("General Jet Aircraft")) {
+			JetBaseModel defaultAcft = new JetBaseModel(type, model, speed, range, price);
+			fleet.add(defaultAcft);
+		} else {
+			System.out.println("Aircraft type not recognized.");
+		}
+		System.out.println("Aircraft acquired!");
 	}
 	
 	@Override
