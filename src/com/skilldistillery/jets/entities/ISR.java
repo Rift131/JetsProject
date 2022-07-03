@@ -7,8 +7,8 @@ public class ISR extends Jet {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ISR(String type, String model, double speed, int range, long price) {
-		super(type, model, speed, range, price);
+	public ISR(String type, String model, String tailNumber, double speed, int range, long price) {
+		super(type, model, tailNumber, speed, range, price);
 		// TODO Auto-generated constructor stub
 	}
 

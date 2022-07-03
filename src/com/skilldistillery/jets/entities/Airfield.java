@@ -29,26 +29,27 @@ public class Airfield {
 				// the fleet array
 				String type = eachAcft[0];
 				String model = eachAcft[1];
-				double speed = Double.parseDouble(eachAcft[2]);
-				int range = Integer.parseInt(eachAcft[3]);
-				long price = Long.parseLong(eachAcft[4]);
+				String tailNumber = eachAcft[2];
+				double speed = Double.parseDouble(eachAcft[3]);
+				int range = Integer.parseInt(eachAcft[4]);
+				long price = Long.parseLong(eachAcft[5]);
 				if (type.equals("Bomber")) {
-					Bomber bomber = new Bomber(type, model, speed, range, price);
+					Bomber bomber = new Bomber(type, model, tailNumber, speed, range, price);
 					fleet.add(bomber);
 				} else if (type.equals("Fighter")) {
-					Fighter fighter = new Fighter(type, model, speed, range, price);
+					Fighter fighter = new Fighter(type, model, tailNumber, speed, range, price);
 					fleet.add(fighter);
 				} else if (type.equals("ISR")) {
-					ISR iSR = new ISR(type, model, speed, range, price);
+					ISR iSR = new ISR(type, model, tailNumber, speed, range, price);
 					fleet.add(iSR);
 				} else if (type.equals("Cargo")) {
-					Cargo cargo = new Cargo(type, model, speed, range, price);
+					Cargo cargo = new Cargo(type, model, tailNumber, speed, range, price);
 					fleet.add(cargo);
 				} else if (type.equals("Tanker")) {
-					Tanker tanker = new Tanker(type, model, speed, range, price);
+					Tanker tanker = new Tanker(type, model, tailNumber, speed, range, price);
 					fleet.add(tanker);
 				} else if (type.equals("General Jet Aircraft")) {
-					JetBaseModel defaultAcft = new JetBaseModel(type, model, speed, range, price);
+					JetBaseModel defaultAcft = new JetBaseModel(type, model, tailNumber, speed, range, price);
 					fleet.add(defaultAcft);
 				} else {
 					System.out.println("Aircraft type not recognized.");
@@ -106,24 +107,24 @@ public class Airfield {
 		}
 	}
 	
-	public void acquisitionNewAircraft(String type, String model, double speed, int range, long price) {
+	public void acquisitionNewAircraft(String type, String model, String tailNumber, double speed, int range, long price) {
 		if (type.equals("Bomber")) {
-			Bomber bomber = new Bomber(type, model, speed, range, price);
+			Bomber bomber = new Bomber(type, model, tailNumber, speed, range, price);
 			fleet.add(bomber);
 		} else if (type.equals("Fighter")) {
-			Fighter fighter = new Fighter(type, model, speed, range, price);
+			Fighter fighter = new Fighter(type, model, tailNumber, speed, range, price);
 			fleet.add(fighter);
 		} else if (type.equals("ISR")) {
-			ISR iSR = new ISR(type, model, speed, range, price);
+			ISR iSR = new ISR(type, model, tailNumber, speed, range, price);
 			fleet.add(iSR);
 		} else if (type.equals("Cargo")) {
-			Cargo cargo = new Cargo(type, model, speed, range, price);
+			Cargo cargo = new Cargo(type, model, tailNumber, speed, range, price);
 			fleet.add(cargo);
 		} else if (type.equals("Tanker")) {
-			Tanker tanker = new Tanker(type, model, speed, range, price);
+			Tanker tanker = new Tanker(type, model, tailNumber, speed, range, price);
 			fleet.add(tanker);
 		} else if (type.equals("General Jet Aircraft")) {
-			JetBaseModel defaultAcft = new JetBaseModel(type, model, speed, range, price);
+			JetBaseModel defaultAcft = new JetBaseModel(type, model, tailNumber, speed, range, price);
 			fleet.add(defaultAcft);
 		} else {
 			System.out.println("Aircraft type not recognized.");
@@ -136,7 +137,7 @@ public class Airfield {
 		StringBuilder builder = new StringBuilder();
 		int index = 0;
 		for (int i = 0; i < fleet.size(); i++) {
-			builder.append("Acft No. ").append(index + 1).append(" ").append(fleet.get(index)).append("\n");
+			builder.append(index + 1).append(". ").append(fleet.get(index)).append("\n");
 			index++;
 		}
 		return builder.toString();

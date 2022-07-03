@@ -8,6 +8,7 @@ public abstract class Jet implements Stealthy, StrikeSortie, SupportSortie{
 	private static int COUNT = 4;
 	private String type;
 	private String model;
+	private String tailNumber;
 	private double speed;
 	private int range;
 	private long price;
@@ -16,9 +17,10 @@ public abstract class Jet implements Stealthy, StrikeSortie, SupportSortie{
 		
 	}
 	
-	public Jet(String type, String model, double speed, int range, long price) {
+	public Jet(String type, String model, String tailNumber, double speed, int range, long price) {
 		this.type = type;
 		this.model = model;
+		this.tailNumber = tailNumber;
 		this.speed = speed;
 		this.range = range;
 		this.price = price;
@@ -62,6 +64,13 @@ public abstract class Jet implements Stealthy, StrikeSortie, SupportSortie{
 		this.model = model;
 	}
 
+	public String getTailNumber() {
+		return tailNumber;
+	}
+	
+	public void setTailNumber(String tailNumber) {
+		this.tailNumber = tailNumber;
+	}
 	public double getSpeed() {
 		return speed;
 	}
@@ -86,9 +95,14 @@ public abstract class Jet implements Stealthy, StrikeSortie, SupportSortie{
 		this.price = price;
 	}
 
+
+
+
+	
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(model, price, range, speed, type);
+		return Objects.hash(model, price, range, speed, tailNumber, type);
 	}
 
 	@Override
@@ -105,13 +119,13 @@ public abstract class Jet implements Stealthy, StrikeSortie, SupportSortie{
 		Jet other = (Jet) obj;
 		return Objects.equals(model, other.model) && price == other.price && range == other.range
 				&& Double.doubleToLongBits(speed) == Double.doubleToLongBits(other.speed)
-				&& Objects.equals(type, other.type);
+				&& Objects.equals(tailNumber, other.tailNumber) && Objects.equals(type, other.type);
 	}
 
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Type: ").append(type).append(", Model: ").append(model).append(", Speed: ").append(speed)
+		builder.append("Type: ").append(type).append(", Model: ").append(model).append(", Tail Number: ").append(tailNumber).append(", Speed: ").append(speed)
 				.append(", Range: ").append(range).append(", Price: ").append(price);
 		return builder.toString();
 	}

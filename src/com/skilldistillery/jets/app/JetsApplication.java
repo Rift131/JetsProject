@@ -134,11 +134,12 @@ public class JetsApplication {
 	private void acquireNewAircraft() {
 		String type = userSetType();
 		String model = userSetModel();
+		String tailNumber = userSetTailNumber();
 		double speed = userSetSpeed();
 		int range = userSetRange();
 		long price = userSetPrice();
 		
-		airfield.acquisitionNewAircraft(type, model, speed, range, price);
+		airfield.acquisitionNewAircraft(type, model, tailNumber, speed, range, price);
 	}
 
 	private String userSetType() {
@@ -225,6 +226,24 @@ public class JetsApplication {
 		}
 		return usersModel;
 	}
+	
+	private String userSetTailNumber() {
+		String usersTailNumber = "";
+		boolean validUserInput = false;
+		while (!validUserInput) {
+			try {
+				System.out.println("Please enter the tail number of the aircraft.");
+				usersTailNumber = userInput.nextLine();
+				validUserInput = true;
+			} catch (InputMismatchException e) {
+				System.out.println("Invalid Input.");
+				userInput.nextLine();
+				validUserInput = false;
+				userSetModel();
+			}
+		}
+		return usersTailNumber;
+	}
 
 	private double userSetSpeed() {
 		double usersSpeed = 0;
@@ -284,6 +303,70 @@ public class JetsApplication {
 
 		// try / catch && instanceof to check if an instance of what the user wants to
 		// delete (specific concrete class) exists (.getSimpleName())
+		boolean validUserInput = false;
+		while (!validUserInput) {
+			int userMenuChoice;
+			try {
+				// display the menu to the user
+				System.out.println("\n");
+				System.out.println("******DECOMISSION MENU*******");
+				System.out.println("*  Select an Aircraft       *");
+				System.out.println("* 2. Scramble All Jets      *");
+				System.out.println("* 3. View Fastest Jet       *");
+				System.out.println("* 4. View Longest Range Jet *");
+				System.out.println("* 5. Launch Support Sorties *");
+				System.out.println("* 6. Launch Strike Sorties  *");
+				System.out.println("* 7. Acquire New Aircraft   *");
+				System.out.println("* 8. Decomission Aircraft   *");
+				System.out.println("* 9. Quit                   *");
+				System.out.println("*****************************");
+				System.out.println("\nPlease enter a number from the menu.");
+				userMenuChoice = userInput.nextInt();
+				userInput.nextLine();
+				validUserInput = true;
+
+				switch (userMenuChoice) {
+				case 1:
+					listFleet();
+					break;
+				case 2:
+					flyAllJets();
+					break;
+				case 3:
+					viewFastestJet();
+					break;
+				case 4:
+					viewLongestRangeJet();
+					break;
+				case 5:
+					launchSupportSortie();
+					break;
+				case 6:
+					launchStrikeSortie();
+					break;
+				case 7:
+					acquireNewAircraft();
+					break;
+				case 8:
+					decomissionAircraft();
+					break;
+				case 9:
+					quit();
+					break;
+				default:
+					System.out.println("The number entered did not match the menu choices. Please try again.");
+					run();
+				}
+			} catch (InputMismatchException e) {
+				System.out.println("Invalid Input.");
+				userInput.nextLine();
+				validUserInput = false;
+				run();
+			}
+			// reset the boolean value for the next time the menu is invoked
+			validUserInput = false;
+			run();
+		}
 	}
 
 	private void quit() {

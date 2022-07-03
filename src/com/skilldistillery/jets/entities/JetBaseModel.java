@@ -7,8 +7,8 @@ public class JetBaseModel extends Jet {
 		// TODO Auto-generated constructor stub
 	}
 
-	public JetBaseModel(String type, String model, double speed, int range, long price) {
-		super(type, model, speed, range, price);
+	public JetBaseModel(String type, String model, String tailNumber, double speed, int range, long price) {
+		super(type, model, tailNumber, speed, range, price);
 		// TODO Auto-generated constructor stub
 	}
 
