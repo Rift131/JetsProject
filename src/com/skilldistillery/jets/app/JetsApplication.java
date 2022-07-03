@@ -132,11 +132,16 @@ public class JetsApplication {
 	}
 
 	private void acquireNewAircraft() {
-		userSetType();
+		String type = userSetType();
+		String model = userSetModel();
+		double speed = userSetSpeed();
+		int range = userSetRange();
+		long price = userSetPrice();
 		
+		airfield.acquisitionNewAircraft(type, model, speed, range, price);
 	}
 
-	private void userSetType() {
+	private String userSetType() {
 		// list the variables the user will assign
 		String usersType = "";
 
@@ -200,10 +205,10 @@ public class JetsApplication {
 		}
 		// reset the boolean value for the next time the menu is invoked
 		validUserInput = false;
-		userSetModel(usersType);
+		return usersType;
 	}
 
-	private void userSetModel(String type) {
+	private String userSetModel() {
 		String usersModel = "";
 		boolean validUserInput = false;
 		while (!validUserInput) {
@@ -215,13 +220,13 @@ public class JetsApplication {
 				System.out.println("Invalid Input.");
 				userInput.nextLine();
 				validUserInput = false;
-				userSetModel(type);
+				userSetModel();
 			}
 		}
-		userSetSpeed(type, usersModel);
+		return usersModel;
 	}
 
-	private void userSetSpeed(String type, String model) {
+	private double userSetSpeed() {
 		double usersSpeed = 0;
 		boolean validUserInput = false;
 		while (!validUserInput) {
@@ -233,13 +238,13 @@ public class JetsApplication {
 				System.out.println("Invalid Input.");
 				userInput.nextLine();
 				validUserInput = false;
-				userSetSpeed(type, model);
+				userSetSpeed();
 			}
 		}
-		userSetRange(type, model, usersSpeed);
+		return usersSpeed;
 	}
 
-	private void userSetRange(String type, String model, double speed) {
+	private int userSetRange() {
 		int usersRange = 0;
 		boolean validUserInput = false;
 		while (!validUserInput) {
@@ -251,13 +256,13 @@ public class JetsApplication {
 				System.out.println("Invalid Input. Please enter a whole number.");
 				userInput.nextLine();
 				validUserInput = false;
-				userSetRange(type, model, speed);
+				userSetRange();
 			}
 		}
-		userSetPrice(type, model, speed, usersRange);
+		return usersRange;
 	}
 
-	private void userSetPrice(String type, String model, double speed, int range) {
+	private long userSetPrice() {
 		long usersPrice = 0;
 		boolean validUserInput = false;
 		while (!validUserInput) {
@@ -269,10 +274,9 @@ public class JetsApplication {
 				System.out.println("Invalid Input. Please enter a whole number.");
 				userInput.nextLine();
 				validUserInput = false;
-				userSetPrice(type, model, speed, range);
 			}
 		}
-		airfield.acquisitionNewAircraft(type, model, speed, range, usersPrice);
+		return usersPrice;
 	}
 
 	private void decomissionAircraft() {
