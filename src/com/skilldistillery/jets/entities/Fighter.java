@@ -21,7 +21,7 @@ public class Fighter extends Jet {
 	@Override
 	public void strikeDelivered() {
 		// TODO Auto-generated method stub
-		System.out.println("FIGHTER REPORT: Bombs away! Ground radar targets eliminated.\nFIGHTER REPORT: Air superiority established. All enemy aircraft destroyed.");
+		System.out.println("FIGHTER REPORT: Bombs away! Radar targets eliminated. The path is clear.\nFIGHTER REPORT: Air superiority established. All enemy aircraft destroyed.");
 	}
 
 	@Override

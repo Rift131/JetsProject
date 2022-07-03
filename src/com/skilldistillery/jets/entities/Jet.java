@@ -33,7 +33,7 @@ public abstract class Jet implements Stealthy, StrikeSortie, SupportSortie{
 	}
 	
 	public double getSpeedInMach(double rawSpeed) {
-		double mach = rawSpeed;
+		double mach = (rawSpeed / .999997226199) * .00130332;
 		return mach;
 	}
 

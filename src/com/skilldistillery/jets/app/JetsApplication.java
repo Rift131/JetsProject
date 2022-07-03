@@ -75,7 +75,7 @@ public class JetsApplication {
 					acquireNewAircraft();
 					break;
 				case 8:
-					decomissionAircraft();
+					decomissionAircraftMenu();
 					break;
 				case 9:
 					quit();
@@ -138,7 +138,7 @@ public class JetsApplication {
 		double speed = userSetSpeed();
 		int range = userSetRange();
 		long price = userSetPrice();
-		
+
 		airfield.acquisitionNewAircraft(type, model, tailNumber, speed, range, price);
 	}
 
@@ -149,7 +149,7 @@ public class JetsApplication {
 		// TODO Auto-generated method stub
 		boolean validUserInput = false;
 		while (!validUserInput) {
-			int userMenuChoice;
+			int userMenuChoice = 0;
 			try {
 				System.out.println("\n");
 				System.out.println("*******ACFT TYPE CHOICES*****");
@@ -226,7 +226,7 @@ public class JetsApplication {
 		}
 		return usersModel;
 	}
-	
+
 	private String userSetTailNumber() {
 		String usersTailNumber = "";
 		boolean validUserInput = false;
@@ -298,7 +298,7 @@ public class JetsApplication {
 		return usersPrice;
 	}
 
-	private void decomissionAircraft() {
+	private void decomissionAircraftMenu() {
 		// TODO Auto-generated method stub
 
 		// try / catch && instanceof to check if an instance of what the user wants to
@@ -310,15 +310,10 @@ public class JetsApplication {
 				// display the menu to the user
 				System.out.println("\n");
 				System.out.println("******DECOMISSION MENU*******");
-				System.out.println("*  Select an Aircraft       *");
-				System.out.println("* 2. Scramble All Jets      *");
-				System.out.println("* 3. View Fastest Jet       *");
-				System.out.println("* 4. View Longest Range Jet *");
-				System.out.println("* 5. Launch Support Sorties *");
-				System.out.println("* 6. Launch Strike Sorties  *");
-				System.out.println("* 7. Acquire New Aircraft   *");
-				System.out.println("* 8. Decomission Aircraft   *");
-				System.out.println("* 9. Quit                   *");
+				System.out.println("* 1. Review Aircraft List   *");
+				System.out.println("* 2. Decomission Aircraft   *");
+				System.out.println("* 3. Return to Main Menu    *");
+				System.out.println("* 4. Quit                   *");
 				System.out.println("*****************************");
 				System.out.println("\nPlease enter a number from the menu.");
 				userMenuChoice = userInput.nextInt();
@@ -330,27 +325,12 @@ public class JetsApplication {
 					listFleet();
 					break;
 				case 2:
-					flyAllJets();
+					decommissionAcft();
 					break;
 				case 3:
-					viewFastestJet();
+					run();
 					break;
 				case 4:
-					viewLongestRangeJet();
-					break;
-				case 5:
-					launchSupportSortie();
-					break;
-				case 6:
-					launchStrikeSortie();
-					break;
-				case 7:
-					acquireNewAircraft();
-					break;
-				case 8:
-					decomissionAircraft();
-					break;
-				case 9:
 					quit();
 					break;
 				default:
@@ -361,17 +341,44 @@ public class JetsApplication {
 				System.out.println("Invalid Input.");
 				userInput.nextLine();
 				validUserInput = false;
-				run();
+				decomissionAircraftMenu();
 			}
 			// reset the boolean value for the next time the menu is invoked
 			validUserInput = false;
-			run();
+			decomissionAircraftMenu();
 		}
+	}
+
+	private void decommissionAcft() {
+		String usersDecomissionInput = "";
+		boolean validUserInput = false;
+		while (!validUserInput) {
+			try {
+				System.out.println("Please enter the tail number of the aircraft to decommission.");
+				usersDecomissionInput = userInput.nextLine();
+				boolean validTailNumber = airfield.tailNumberExists(usersDecomissionInput);
+				if (validTailNumber) {
+					airfield.decomissionAcft(usersDecomissionInput);
+					validUserInput = true;
+				} else {
+					System.out.println("Tail Number not recognized. Please try again.");
+				}
+
+			} catch (InputMismatchException e) {
+				System.out.println("Invalid Input. Please enter a whole number.");
+				userInput.nextLine();
+				validUserInput = false;
+			}
+		}
+		validUserInput = false;
+		decomissionAircraftMenu();
 	}
 
 	private void quit() {
 		// TODO Auto-generated method stub
-
+		System.out.println("Jets program closing");
+		userInput.close();
+		System.exit(0);
 	}
 
 	// fly all jets method

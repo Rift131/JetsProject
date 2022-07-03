@@ -11,10 +11,8 @@ public class Airfield {
 	// private List<Jet> fleet = new ArrayList<Jet>();
 	private List<Jet> fleet = new ArrayList<Jet>();
 
-
 	public Airfield() {
 
-		
 	}
 
 	// airfieldPopulate method
@@ -90,24 +88,25 @@ public class Airfield {
 				longestRange = fleet.get(i).getRange();
 				enduranceAircraft = fleet.get(i);
 			}
-	}
+		}
 		return enduranceAircraft;
 	}
-	
+
 	public void launchSupportSorties() {
 		for (Jet supportAcft : fleet) {
 			supportAcft.supportRendered();
 		}
 	}
-	
+
 	public void launchStrikeSorties() {
 		for (Jet strikeAcft : fleet) {
 			strikeAcft.undetectable();
 			strikeAcft.strikeDelivered();
 		}
 	}
-	
-	public void acquisitionNewAircraft(String type, String model, String tailNumber, double speed, int range, long price) {
+
+	public void acquisitionNewAircraft(String type, String model, String tailNumber, double speed, int range,
+			long price) {
 		if (type.equals("Bomber")) {
 			Bomber bomber = new Bomber(type, model, tailNumber, speed, range, price);
 			fleet.add(bomber);
@@ -131,7 +130,35 @@ public class Airfield {
 		}
 		System.out.println("Aircraft acquired!");
 	}
-	
+
+	public boolean tailNumberExists(String tNumber) {
+		boolean validTail = false;
+		for (Jet tailCheck : fleet) {
+			if (tailCheck.getTailNumber().equals(tNumber)) {
+				validTail = true;
+				break;
+			}
+		}
+		return validTail;
+	}
+
+	public void decomissionAcft(String tNumber) {
+		Jet decomissionAcft = null;
+		for (Jet aircraft : fleet) {
+			if (aircraft.getTailNumber().equals(tNumber)) {
+				decomissionAcft = aircraft;
+			}
+		}
+		
+		for (Iterator<Jet> iterator = fleet.iterator(); iterator.hasNext();) {
+			Jet boneyardDelivery = iterator.next();
+			if (boneyardDelivery.equals(decomissionAcft)) {
+				System.out.println("Aircraft " + tNumber + " has been shipped to the boneyard.");
+				iterator.remove();
+		}
+			} 
+		}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
