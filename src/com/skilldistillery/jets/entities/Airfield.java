@@ -68,6 +68,13 @@ public class Airfield {
 			aircraft.fly();
 		}
 	}
+	
+public void	scrambleSingleJet(String usersTailNumber) {
+	for (Jet aircraft : fleet) {
+		if (aircraft.getTailNumber().equals(usersTailNumber))
+			aircraft.fly();
+	}
+}
 
 	public Jet viewFastestJet() {
 		double greatestSpeed = fleet.get(0).getSpeed();

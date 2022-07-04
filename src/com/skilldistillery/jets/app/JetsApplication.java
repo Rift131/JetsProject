@@ -36,17 +36,18 @@ public class JetsApplication {
 			try {
 				// display the menu to the user
 				System.out.println("\n");
-				System.out.println("**********JETS MENU**********");
-				System.out.println("* 1. List Fleet             *");
-				System.out.println("* 2. Scramble All Jets      *");
-				System.out.println("* 3. View Fastest Jet       *");
-				System.out.println("* 4. View Longest Range Jet *");
-				System.out.println("* 5. Launch Support Sorties *");
-				System.out.println("* 6. Launch Strike Sorties  *");
-				System.out.println("* 7. Acquire New Aircraft   *");
-				System.out.println("* 8. Decomission Aircraft   *");
-				System.out.println("* 9. Quit                   *");
-				System.out.println("*****************************");
+				System.out.println("***********JETS MENU**********");
+				System.out.println("* 1.  List Fleet             *");
+				System.out.println("* 2.  Scramble All Jets      *");
+				System.out.println("* 3.  Scramble One Jet       *");
+				System.out.println("* 4.  View Fastest Jet       *");
+				System.out.println("* 5.  View Longest Range Jet *");
+				System.out.println("* 6.  Launch Support Sorties *");
+				System.out.println("* 7.  Launch Strike Sorties  *");
+				System.out.println("* 8.  Acquire New Aircraft   *");
+				System.out.println("* 9.  Decomission Aircraft   *");
+				System.out.println("* 10. Quit                   *");
+				System.out.println("******************************");
 				System.out.println("\nPlease enter a number from the menu.");
 				userMenuChoice = userInput.nextInt();
 				userInput.nextLine();
@@ -60,24 +61,27 @@ public class JetsApplication {
 					flyAllJets();
 					break;
 				case 3:
-					viewFastestJet();
+					flyOneJet();
 					break;
 				case 4:
-					viewLongestRangeJet();
+					viewFastestJet();
 					break;
 				case 5:
-					launchSupportSortie();
+					viewLongestRangeJet();
 					break;
 				case 6:
-					launchStrikeSortie();
+					launchSupportSortie();
 					break;
 				case 7:
-					acquireNewAircraft();
+					launchStrikeSortie();
 					break;
 				case 8:
-					decomissionAircraftMenu();
+					acquireNewAircraft();
 					break;
 				case 9:
+					decomissionAircraftMenu();
+					break;
+				case 10:
 					quit();
 					break;
 				default:
@@ -107,6 +111,66 @@ public class JetsApplication {
 		// TODO Auto-generated method stub
 		airfield.scrambleAllJets();
 	}
+	
+private void flyOneJet() {
+	boolean validUserInput = false;
+	while (!validUserInput) {
+		int userMenuChoice;
+		try {
+			// display the menu to the user
+			System.out.println("\n");
+			System.out.println("***********JETS MENU**********");
+			System.out.println("* 1. List Available Aircraft *");
+			System.out.println("* 2. Launch By Tail Number   *");
+			System.out.println("* 3. Return to Menu          *");
+			System.out.println("* 4. Quit                    *");
+			System.out.println("*****************************");
+			System.out.println("\nPlease enter a number from the menu.");
+			userMenuChoice = userInput.nextInt();
+			userInput.nextLine();
+			validUserInput = true;
+
+			switch (userMenuChoice) {
+			case 1:
+				System.out.println(airfield.toString());
+				flyOneJet();
+				break;
+			case 2:
+				userTailNumberToScramble();
+				flyOneJet();
+				break;
+			case 3:
+				run();
+				break;
+			case 4:
+				quit();
+				break;
+			
+			default:
+				System.out.println("The number entered did not match the menu choices. Please try again.");
+				run();
+			}
+		} catch (InputMismatchException e) {
+			System.out.println("Invalid Input.");
+			userInput.nextLine();
+			validUserInput = false;
+			run();
+		}
+		// reset the boolean value for the next time the menu is invoked
+		validUserInput = false;
+		run();
+	}
+}
+
+private void userTailNumberToScramble() {
+	System.out.println("Please enter the tail number of the aircraft you want to launch.");
+	String usersTail = userInput.nextLine().trim();
+if (	!airfield.tailNumberExists(usersTail)) {
+System.out.println("Tail Number not found. Please try again.");	
+flyOneJet();
+}
+airfield.scrambleSingleJet(usersTail);
+}
 
 	private void viewFastestJet() {
 		// TODO Auto-generated method stub
@@ -252,6 +316,8 @@ public class JetsApplication {
 			try {
 				System.out.println("Please enter the speed of the aircraft.");
 				usersSpeed = userInput.nextDouble();
+				userInput.nextLine();
+		
 				validUserInput = true;
 			} catch (InputMismatchException e) {
 				System.out.println("Invalid Input.");
@@ -270,6 +336,8 @@ public class JetsApplication {
 			try {
 				System.out.println("Please enter the range of the aircraft.");
 				usersRange = userInput.nextInt();
+				userInput.nextLine();
+				
 				validUserInput = true;
 			} catch (InputMismatchException e) {
 				System.out.println("Invalid Input. Please enter a whole number.");
@@ -288,6 +356,7 @@ public class JetsApplication {
 			try {
 				System.out.println("Please enter the price of the aircraft (numbers only).");
 				usersPrice = userInput.nextLong();
+				userInput.nextLine();
 				validUserInput = true;
 			} catch (InputMismatchException e) {
 				System.out.println("Invalid Input. Please enter a whole number.");
