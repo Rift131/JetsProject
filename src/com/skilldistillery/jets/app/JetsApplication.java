@@ -119,12 +119,12 @@ private void flyOneJet() {
 		try {
 			// display the menu to the user
 			System.out.println("\n");
-			System.out.println("***********JETS MENU**********");
+			System.out.println("******SINGLE LAUNCH MENU******");
 			System.out.println("* 1. List Available Aircraft *");
 			System.out.println("* 2. Launch By Tail Number   *");
 			System.out.println("* 3. Return to Menu          *");
 			System.out.println("* 4. Quit                    *");
-			System.out.println("*****************************");
+			System.out.println("******************************");
 			System.out.println("\nPlease enter a number from the menu.");
 			userMenuChoice = userInput.nextInt();
 			userInput.nextLine();
