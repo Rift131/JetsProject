@@ -8,7 +8,7 @@ public class Tanker extends Jet implements SupportSortie{
 	}
 
 	public Tanker(String type, String model, String tailNumber, double speed, int range, long price) {
-		super(type, model, tailNumber, speed, range, price);
+		super(type, model, tailNumber, tailNumber, speed, range, price);
 		// TODO Auto-generated constructor stub
 	}
 

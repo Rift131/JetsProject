@@ -9,6 +9,7 @@ public abstract class Jet implements LaunchSortie {
 	private static int COUNT = 4;
 	private String type;
 	private String model;
+	private String pilot;
 	protected String tailNumber;
 	private double speed;
 	private int range;
@@ -17,17 +18,17 @@ public abstract class Jet implements LaunchSortie {
 	private final DecimalFormat df = new DecimalFormat("0.00");
 	private final DecimalFormat money = new DecimalFormat("$#,###0.00");
 
-	private double sortieDuration = (this.range / this.speed) * 60;
 	
 	
 	public Jet() {
 		
 	}
 	
-	public Jet(String type, String model, String tailNumber, double speed, int range, long price) {
+	public Jet(String type, String model, String tailNumber, String pilot, double speed, int range, long price) {
 		this.type = type;
 		this.model = model;
 		this.tailNumber = tailNumber;
+		this.pilot = pilot;
 		this.speed = speed;
 		this.range = range;
 		this.price = price;
@@ -35,8 +36,9 @@ public abstract class Jet implements LaunchSortie {
 	
 	public void fly() {
 		// standard sysout of flying message, range for when an aircraft flies
+		double sortieDuration = (range / speed) * 60;
 		
-		System.out.println(this.model + " tail number " + this.tailNumber + ", maintaining a mach speed of " + getSpeedInMach(this.speed) + " and a range of " + this.range + " can fly for a duration of " + (Math.round(sortieDuration)) + " minutes.");
+		System.out.println(pilot + " checking in! Flying a " + model + " model, tail number " + tailNumber + ". I'm maintaining a mach speed of " + getSpeedInMach(speed) + " with a range of " + range + " miles. I can fly for a duration of " + (Math.round(sortieDuration)) + " minutes.");
 	}
 	
 	public String getSpeedInMach(double rawSpeed) {
@@ -50,6 +52,14 @@ public abstract class Jet implements LaunchSortie {
 
 	public static int getCOUNT() {
 		return COUNT;
+	}
+
+	public String getPilot() {
+		return pilot;
+	}
+
+	public void setPilot(String pilot) {
+		this.pilot = pilot;
 	}
 
 	public static void setCOUNT(int cOUNT) {

@@ -3,15 +3,14 @@ package com.skilldistillery.jets.entities;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.text.DecimalFormat;
 import java.util.*;
-
-import javax.jws.Oneway;
 
 public class Airfield {
 	// private List<Jet> fleet = new ArrayList<Jet>();
 	private List<Jet> fleet = new ArrayList<Jet>();
-	
+	private String[] pilotPool = { "Scarecrow", "Father", "Two Dogs", "Igor", "FIIG", "Gucci", "Ghost", "Bling",
+			"Crusher", "Elvis", "Spiderman", "Hacksaw" };
+
 	public Airfield() {
 
 	}
@@ -32,23 +31,30 @@ public class Airfield {
 				double speed = Double.parseDouble(eachAcft[3]);
 				int range = Integer.parseInt(eachAcft[4]);
 				long price = Long.parseLong(eachAcft[5]);
+
 				if (type.equals("Bomber")) {
 					Bomber bomber = new Bomber(type, model, tailNumber, speed, range, price);
+					bomber.setPilot(randomPilot());
 					fleet.add(bomber);
 				} else if (type.equals("Fighter")) {
 					Fighter fighter = new Fighter(type, model, tailNumber, speed, range, price);
+					fighter.setPilot(randomPilot());
 					fleet.add(fighter);
 				} else if (type.equals("ISR")) {
 					ISR iSR = new ISR(type, model, tailNumber, speed, range, price);
+					iSR.setPilot(randomPilot());
 					fleet.add(iSR);
 				} else if (type.equals("Cargo")) {
 					Cargo cargo = new Cargo(type, model, tailNumber, speed, range, price);
+					cargo.setPilot(randomPilot());
 					fleet.add(cargo);
 				} else if (type.equals("Tanker")) {
 					Tanker tanker = new Tanker(type, model, tailNumber, speed, range, price);
+					tanker.setPilot(this.randomPilot());
 					fleet.add(tanker);
 				} else if (type.equals("General Jet Aircraft")) {
 					JetBaseModel defaultAcft = new JetBaseModel(type, model, tailNumber, speed, range, price);
+					defaultAcft.setPilot(randomPilot());
 					fleet.add(defaultAcft);
 				} else {
 					System.out.println("Aircraft type not recognized.");
@@ -68,13 +74,13 @@ public class Airfield {
 			aircraft.fly();
 		}
 	}
-	
-public void	scrambleSingleJet(String usersTailNumber) {
-	for (Jet aircraft : fleet) {
-		if (aircraft.getTailNumber().equals(usersTailNumber))
-			aircraft.fly();
+
+	public void scrambleSingleJet(String usersTailNumber) {
+		for (Jet aircraft : fleet) {
+			if (aircraft.getTailNumber().equals(usersTailNumber))
+				aircraft.fly();
+		}
 	}
-}
 
 	public Jet viewFastestJet() {
 		double greatestSpeed = fleet.get(0).getSpeed();
@@ -116,21 +122,28 @@ public void	scrambleSingleJet(String usersTailNumber) {
 			long price) {
 		if (type.equals("Bomber")) {
 			Bomber bomber = new Bomber(type, model, tailNumber, speed, range, price);
+			bomber.setPilot(this.randomPilot());
 			fleet.add(bomber);
 		} else if (type.equals("Fighter")) {
 			Fighter fighter = new Fighter(type, model, tailNumber, speed, range, price);
+			fighter.setPilot(this.randomPilot());
+			randomPilot();
 			fleet.add(fighter);
 		} else if (type.equals("ISR")) {
 			ISR iSR = new ISR(type, model, tailNumber, speed, range, price);
+			iSR.setPilot(this.randomPilot());
 			fleet.add(iSR);
 		} else if (type.equals("Cargo")) {
 			Cargo cargo = new Cargo(type, model, tailNumber, speed, range, price);
+			cargo.setPilot(this.randomPilot());
 			fleet.add(cargo);
 		} else if (type.equals("Tanker")) {
 			Tanker tanker = new Tanker(type, model, tailNumber, speed, range, price);
+			tanker.setPilot(this.randomPilot());
 			fleet.add(tanker);
 		} else if (type.equals("General Jet Aircraft")) {
 			JetBaseModel defaultAcft = new JetBaseModel(type, model, tailNumber, speed, range, price);
+			defaultAcft.setPilot(this.randomPilot());
 			fleet.add(defaultAcft);
 		} else {
 			System.out.println("Aircraft type not recognized.");
@@ -156,22 +169,37 @@ public void	scrambleSingleJet(String usersTailNumber) {
 				decomissionAcft = aircraft;
 			}
 		}
-		
+
 		for (Iterator<Jet> iterator = fleet.iterator(); iterator.hasNext();) {
 			Jet boneyardDelivery = iterator.next();
 			if (boneyardDelivery.equals(decomissionAcft)) {
 				System.out.println("Aircraft " + tNumber + " has been shipped to the boneyard.");
 				iterator.remove();
+			}
 		}
-			} 
-		}
+	}
+
+	public String randomPilot() {
+		String pilot = "Deafult Pilot";
+			// int set to a random number within the range (12) of the pilot name array size
+			int max = 11;
+			int min = 1;
+			int range = max - min + 1;
+			int randomPilot = (int) (Math.random() * range) + min;
+			System.out.println(randomPilot);
+			pilot = pilotPool[randomPilot];
+			// aircraft.add pilot name array at random number
+		
+		return pilot;
+	}
 
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		int listNumber = 0;
-		for (int i = 0; i < fleet.size(); i++) {
-			builder.append(listNumber + 1).append(". ").append(fleet.get(i)).append("\n");
+		for (Jet aircraft : fleet) {
+			builder.append(listNumber + 1).append(". ").append(aircraft).append(", Pilot: ").append(aircraft.getPilot())
+					.append("\n");
 			listNumber++;
 		}
 		return builder.toString();

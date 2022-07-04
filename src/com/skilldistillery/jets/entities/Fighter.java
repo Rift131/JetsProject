@@ -8,7 +8,7 @@ public class Fighter extends Jet implements StrikeSortie, SupportSortie {
 	}
 
 	public Fighter(String type, String model, String tailNumber, double speed, int range, long price) {
-		super(type, model, tailNumber, speed, range, price);
+		super(type, model, tailNumber, tailNumber, speed, range, price);
 		// TODO Auto-generated constructor stub
 	}
 
