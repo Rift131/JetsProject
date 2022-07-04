@@ -445,38 +445,9 @@ airfield.scrambleSingleJet(usersTail);
 
 	private void quit() {
 		// TODO Auto-generated method stub
-		System.out.println("Jets program closing");
+		System.out.println("Jets program is now closed. Thank you for your time!");
 		userInput.close();
 		System.exit(0);
 	}
-
-	// fly all jets method
-
-	// view fastest jet method
-
-	// view jet with longest range method
-
-	// load all cargo jets method (invoke cargo interface)
-
-	// dogfight method (invoke the an interface specific to the ISR and fighter
-	// aircraft)
-
-	// method to add an aircraft to the ArrayList (sub-menu)
-
-	// try catches for inputs that could break the data types expected
-
-	// increment the count (see food truck)
-
-	// method to delete an aircraft from the fleet (sub-menu)
-
-	// decrement the count (see food truck)
-
-	// method to quit
-
-	// sysout closing message
-
-	// close the scanner
-
-	// sys.close
 
 }

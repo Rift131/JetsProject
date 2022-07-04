@@ -38,7 +38,7 @@ public abstract class Jet implements LaunchSortie {
 		// standard sysout of flying message, range for when an aircraft flies
 		double sortieDuration = (range / speed) * 60;
 		
-		System.out.println(pilot + " checking in! Flying a " + model + " model, tail number " + tailNumber + ". I'm maintaining a mach speed of " + getSpeedInMach(speed) + " with a range of " + range + " miles. I can fly for a duration of " + (Math.round(sortieDuration)) + " minutes.");
+		System.out.println(pilot + " checking in! Flying a " + model + " model, tail number " + tailNumber + ". I'm maintaining a mach speed of " + getSpeedInMach(speed) + " with a range of " + range + " miles. I can fly for a duration of " + (Math.round(sortieDuration)) + " minutes at this speed.");
 	}
 	
 	public String getSpeedInMach(double rawSpeed) {
@@ -138,11 +138,7 @@ public abstract class Jet implements LaunchSortie {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Type: ").append(type).append(", Model: ").append(model).append(", Tail Number: ").append(tailNumber).append(",\nSpeed (MPH): ").append(speed).append(", Mach: ").append(getSpeedInMach(speed)).append(", Range: ").append(range).append(", Price: ").append(money.format(getPrice())).append(", PILOT ASSIGNED: ").append(getPilot());
+		builder.append("Type: ").append(type).append(", Model: ").append(model).append(", Tail Number: ").append(tailNumber).append(",\nSpeed (MPH): ").append(speed).append(", Mach: ").append(getSpeedInMach(speed)).append(", Range: ").append(range).append(", Price: ").append(money.format(getPrice())).append(", Pilot Assigned: ").append(getPilot());
 		return builder.toString();
 	}
-
-	
-	
-	
 }

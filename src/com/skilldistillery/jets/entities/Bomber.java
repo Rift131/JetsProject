@@ -18,7 +18,7 @@ public class Bomber extends Jet implements Stealthy, StrikeSortie {
 	@Override
 	public void undetectable() {
 		// TODO Auto-generated method stub
-		System.out.println(getPilot() + ", checking in: BOMBER REOPRT for aircraft " + getTailNumber() + "\nUndetectable by enemy radar, entering enemy air space.\n");
+		System.out.println(getPilot() + ", checking in: BOMBER REPORT for aircraft " + getTailNumber() + "\nUndetectable by enemy radar, entering enemy air space.\n");
 	}
 
 	@Override

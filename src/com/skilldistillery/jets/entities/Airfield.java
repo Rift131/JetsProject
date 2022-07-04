@@ -186,7 +186,6 @@ public class Airfield {
 			int min = 1;
 			int range = max - min + 1;
 			int randomPilot = (int) (Math.random() * range) + min;
-			System.out.println(randomPilot);
 			pilot = pilotPool[randomPilot];
 			// aircraft.add pilot name array at random number
 		
@@ -198,8 +197,8 @@ public class Airfield {
 		StringBuilder builder = new StringBuilder();
 		int listNumber = 0;
 		for (Jet aircraft : fleet) {
-			builder.append(listNumber + 1).append(". ").append(aircraft).append(", Pilot: ").append(aircraft.getPilot())
-					.append("\n");
+			builder.append(listNumber + 1).append(". ").append(aircraft).append("\n");
+					;
 			listNumber++;
 		}
 		return builder.toString();
