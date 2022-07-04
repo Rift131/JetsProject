@@ -1,6 +1,6 @@
 package com.skilldistillery.jets.entities;
 
-public class JetBaseModel extends Jet {
+public class JetBaseModel extends Jet implements SupportSortie {
 
 	public JetBaseModel() {
 		super();
@@ -13,21 +13,17 @@ public class JetBaseModel extends Jet {
 	}
 
 	@Override
-	public void undetectable() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void strikeDelivered() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void supportRendered() {
 		// TODO Auto-generated method stub
-		
+		System.out.println("Aircraft " + getTailNumber() + " has generally supported the sortie... in some general way that is generally appreciated by all, generally speaking.");
+	}
+
+	@Override
+	public void launchSortie(boolean x) {
+		// TODO Auto-generated method stub
+		if (x == false) {
+		supportRendered();
+		}
 	}
 
 }

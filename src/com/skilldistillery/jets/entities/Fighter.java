@@ -1,6 +1,6 @@
 package com.skilldistillery.jets.entities;
 
-public class Fighter extends Jet {
+public class Fighter extends Jet implements StrikeSortie, SupportSortie {
 
 	public Fighter() {
 		super();
@@ -12,26 +12,27 @@ public class Fighter extends Jet {
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	public void undetectable() {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void strikeDelivered() {
 		// TODO Auto-generated method stub
-		System.out.println("FIGHTER REPORT: Bombs away! Radar targets eliminated. The path is clear.\nFIGHTER REPORT: Air superiority established. All enemy aircraft destroyed.");
+		System.out.println("FIGHTER " + getTailNumber() + " REPORT: Bombs away! Radar targets eliminated. The path is clear.\nFIGHTER " + getTailNumber() + " REPORT: Air superiority established. All enemy aircraft destroyed.");
 	}
 
 	@Override
 	public void supportRendered() {
 		// TODO Auto-generated method stub
-		System.out.println("FIGHTER REPORT: On patrol. Standing by for on-demand ATG support or bomber escort.");
+		System.out.println("FIGHTER " + getTailNumber() + " REPORT: Providing escort for cargo aircraft.");
 	}
 
-	
-
-	// override the fly method of jets & sysout relative message to the jet details and the amount of time the jet can fly until it runs out of fuel (based on speed and range)
+	@Override
+	public void launchSortie(boolean x) {
+		// TODO Auto-generated method stub
+		if (x == false) {
+		supportRendered();
+		} else {
+		strikeDelivered();
+		}
+	}
 
 }

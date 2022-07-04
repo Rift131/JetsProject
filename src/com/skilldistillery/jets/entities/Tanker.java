@@ -1,6 +1,6 @@
 package com.skilldistillery.jets.entities;
 
-public class Tanker extends Jet {
+public class Tanker extends Jet implements SupportSortie{
 
 	public Tanker() {
 		super();
@@ -12,24 +12,18 @@ public class Tanker extends Jet {
 		// TODO Auto-generated constructor stub
 	}
 
-	
-
-	@Override
-	public void undetectable() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void strikeDelivered() {
-		// TODO Auto-generated method stub
-		
-	}
-
 	@Override
 	public void supportRendered() {
 		// TODO Auto-generated method stub
-		System.out.println("TANKER REPORT: On the track. Bomber and Fighter Aircraft aerial refuel INW.");
+		System.out.println("TANKER " + getTailNumber() + " REPORT: On the track. Bomber and Fighter Aircraft aerial refuel INW.");
+	}
+
+	@Override
+	public void launchSortie(boolean x) {
+		// TODO Auto-generated method stub
+		if (x == false) {
+		supportRendered();
+		}
 	}
 
 	

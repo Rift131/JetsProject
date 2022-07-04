@@ -1,17 +1,24 @@
 package com.skilldistillery.jets.entities;
 
+import java.text.DecimalFormat;
 import java.util.Objects;
 
-public abstract class Jet implements Stealthy, StrikeSortie, SupportSortie{
+public abstract class Jet implements LaunchSortie {
 // follow UML for the fields and methods
 	//with 5 prepopulated aircraft, the current count would be 5
 	private static int COUNT = 4;
 	private String type;
 	private String model;
-	private String tailNumber;
+	protected String tailNumber;
 	private double speed;
 	private int range;
 	private long price;
+	
+	private final DecimalFormat df = new DecimalFormat("0.00");
+	private final DecimalFormat money = new DecimalFormat("$#,###0.00");
+
+	private double sortieDuration = (this.range / this.speed) * 60;
+	
 	
 	public Jet() {
 		
@@ -28,13 +35,14 @@ public abstract class Jet implements Stealthy, StrikeSortie, SupportSortie{
 	
 	public void fly() {
 		// standard sysout of flying message, range for when an aircraft flies
-		double sortieDuration = this.range / this.speed;
-		System.out.println(this.model + " maintaining a max speed of " + this.speed + " and a range of " + this.range + " can fly for a duration of " + (Math.round(sortieDuration)) + " minutes.");
+		
+		System.out.println(this.model + " tail number " + this.tailNumber + ", maintaining a mach speed of " + getSpeedInMach(this.speed) + " and a range of " + this.range + " can fly for a duration of " + (Math.round(sortieDuration)) + " minutes.");
 	}
 	
-	public double getSpeedInMach(double rawSpeed) {
-		double mach = (rawSpeed / .999997226199) * .00130332;
-		return mach;
+	public String getSpeedInMach(double rawSpeed) {
+		double mach = rawSpeed * .00130332;
+		String result = df.format(mach);
+		return result;
 	}
 
 	
@@ -95,11 +103,6 @@ public abstract class Jet implements Stealthy, StrikeSortie, SupportSortie{
 		this.price = price;
 	}
 
-
-
-
-	
-
 	@Override
 	public int hashCode() {
 		return Objects.hash(model, price, range, speed, tailNumber, type);
@@ -125,10 +128,10 @@ public abstract class Jet implements Stealthy, StrikeSortie, SupportSortie{
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Type: ").append(type).append(", Model: ").append(model).append(", Tail Number: ").append(tailNumber).append(", Speed: ").append(speed)
-				.append(", Range: ").append(range).append(", Price: ").append(price);
+		builder.append("Type: ").append(type).append(", Model: ").append(model).append(", Tail Number: ").append(tailNumber).append(", Speed (MPH): ").append(speed).append(", Mach: ").append(getSpeedInMach(speed)).append(", Range: ").append(range).append(", Price: ").append(money.format(getPrice()));
 		return builder.toString();
 	}
+
 	
 	
 	

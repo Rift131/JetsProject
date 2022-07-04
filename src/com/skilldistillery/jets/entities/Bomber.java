@@ -1,6 +1,6 @@
 package com.skilldistillery.jets.entities;
 
-public class Bomber extends Jet {
+public class Bomber extends Jet implements Stealthy, StrikeSortie {
 
 	public Bomber() {
 		super();
@@ -18,22 +18,26 @@ public class Bomber extends Jet {
 	@Override
 	public void undetectable() {
 		// TODO Auto-generated method stub
-		System.out.println("BOMBER REPORT: Undetectable by enemy radar, entering enemy air space.");
+		System.out.println("BOMBER " + getTailNumber() + " REPORT: Undetectable by enemy radar, entering enemy air space.");
 	}
 
 	@Override
 	public void strikeDelivered() {
 		// TODO Auto-generated method stub
-		System.out.println("BOMBER REPORT: Bombs on target, returning to base.");
+		System.out.println("BOMBER " + getTailNumber() + " REPORT: Bombs on target, returning to base.");
 	}
+
 
 	@Override
-	public void supportRendered() {
+	public void launchSortie(boolean x) {
 		// TODO Auto-generated method stub
-		
+		if (x == true) {
+		undetectable();
+		strikeDelivered();
+		}
 	}
-
-	
-	
-
 }
+
+
+	
+

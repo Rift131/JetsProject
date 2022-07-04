@@ -1,6 +1,6 @@
 package com.skilldistillery.jets.entities;
 
-public class Cargo extends Jet {
+public class Cargo extends Jet implements SupportSortie{
 
 	public Cargo() {
 		super();
@@ -13,21 +13,17 @@ public class Cargo extends Jet {
 	}
 
 	@Override
-	public void undetectable() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void strikeDelivered() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void supportRendered() {
 		// TODO Auto-generated method stub
-		System.out.println("CARGO REPORT: Tools, Equipment and ADVON team loaded. Deploying to FOB.");
+		System.out.println("CARGO AIRCRAFT " + getTailNumber() + " REPORT: Tools, Equipment and ADVON team loaded. Deploying to FOB.");
+	}
+
+	@Override
+	public void launchSortie(boolean x) {
+		// TODO Auto-generated method stub
+		if (x == false) {
+		supportRendered();
+		}
 	}
 
 	

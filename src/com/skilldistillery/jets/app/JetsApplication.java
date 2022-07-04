@@ -233,7 +233,7 @@ public class JetsApplication {
 		while (!validUserInput) {
 			try {
 				System.out.println("Please enter the tail number of the aircraft.");
-				usersTailNumber = userInput.nextLine();
+				usersTailNumber = userInput.nextLine().trim();
 				validUserInput = true;
 			} catch (InputMismatchException e) {
 				System.out.println("Invalid Input.");
@@ -338,7 +338,7 @@ public class JetsApplication {
 					run();
 				}
 			} catch (InputMismatchException e) {
-				System.out.println("Invalid Input.");
+				System.out.println("Invalid menu selection entry.");
 				userInput.nextLine();
 				validUserInput = false;
 				decomissionAircraftMenu();
@@ -355,7 +355,7 @@ public class JetsApplication {
 		while (!validUserInput) {
 			try {
 				System.out.println("Please enter the tail number of the aircraft to decommission.");
-				usersDecomissionInput = userInput.nextLine();
+				usersDecomissionInput = userInput.nextLine().trim();
 				boolean validTailNumber = airfield.tailNumberExists(usersDecomissionInput);
 				if (validTailNumber) {
 					airfield.decomissionAcft(usersDecomissionInput);

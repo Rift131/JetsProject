@@ -1,6 +1,6 @@
 package com.skilldistillery.jets.entities;
 
-public class ISR extends Jet {
+public class ISR extends Jet implements SupportSortie {
 
 	public ISR() {
 		super();
@@ -16,19 +16,15 @@ public class ISR extends Jet {
 	@Override
 	public void supportRendered() {
 		// TODO Auto-generated method stub
-		System.out.println("ISR REPORT: Ground threats detected and streamed to all aircraft.");
+		System.out.println("ISR " + getTailNumber() + " REPORT: Ground threats detected and streamed to all aircraft.");
 	}
 
 	@Override
-	public void undetectable() {
+	public void launchSortie(boolean x) {
 		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void strikeDelivered() {
-		// TODO Auto-generated method stub
-		
+		if (x == false) {
+		supportRendered();
+		}
 	}
 
 	// override the fly method of jets & sysout relative message to the jet details and the amount of time the jet can fly until it runs out of fuel (based on speed and range)

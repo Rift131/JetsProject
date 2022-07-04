@@ -3,6 +3,7 @@ package com.skilldistillery.jets.entities;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.*;
 
 import javax.jws.Oneway;
@@ -10,7 +11,7 @@ import javax.jws.Oneway;
 public class Airfield {
 	// private List<Jet> fleet = new ArrayList<Jet>();
 	private List<Jet> fleet = new ArrayList<Jet>();
-
+	
 	public Airfield() {
 
 	}
@@ -94,14 +95,13 @@ public class Airfield {
 
 	public void launchSupportSorties() {
 		for (Jet supportAcft : fleet) {
-			supportAcft.supportRendered();
+			supportAcft.launchSortie(false);
 		}
 	}
 
 	public void launchStrikeSorties() {
 		for (Jet strikeAcft : fleet) {
-			strikeAcft.undetectable();
-			strikeAcft.strikeDelivered();
+			strikeAcft.launchSortie(true);
 		}
 	}
 
@@ -162,10 +162,10 @@ public class Airfield {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		int index = 0;
+		int listNumber = 0;
 		for (int i = 0; i < fleet.size(); i++) {
-			builder.append(index + 1).append(". ").append(fleet.get(index)).append("\n");
-			index++;
+			builder.append(listNumber + 1).append(". ").append(fleet.get(i)).append("\n");
+			listNumber++;
 		}
 		return builder.toString();
 	}
