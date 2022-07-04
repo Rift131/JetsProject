@@ -16,7 +16,7 @@ public class ISR extends Jet implements SupportSortie {
 	@Override
 	public void supportRendered() {
 		// TODO Auto-generated method stub
-		System.out.println("ISR " + getTailNumber() + " REPORT: Ground threats detected and streamed to all aircraft.");
+		System.out.println(getPilot() + ", aircraft " + getTailNumber() + " checking in.\nISR REPORT: Ground threats detected and streamed to all aircraft.\n");
 	}
 
 	@Override

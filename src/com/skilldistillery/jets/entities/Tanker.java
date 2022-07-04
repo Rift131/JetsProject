@@ -15,7 +15,7 @@ public class Tanker extends Jet implements SupportSortie{
 	@Override
 	public void supportRendered() {
 		// TODO Auto-generated method stub
-		System.out.println("TANKER " + getTailNumber() + " REPORT: On the track. Bomber and Fighter Aircraft aerial refuel INW.");
+		System.out.println(getPilot() + ", aircraft " + getTailNumber() + " checking in. \nTANKER REPORT: On the track. Bomber and Fighter Aircraft aerial refuel INW.\n");
 	}
 
 	@Override

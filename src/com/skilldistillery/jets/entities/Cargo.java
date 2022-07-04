@@ -15,7 +15,7 @@ public class Cargo extends Jet implements SupportSortie{
 	@Override
 	public void supportRendered() {
 		// TODO Auto-generated method stub
-		System.out.println("CARGO AIRCRAFT " + getTailNumber() + " REPORT: Tools, Equipment and ADVON team loaded. Deploying to FOB.");
+		System.out.println(getPilot() + ", aircraft " + getTailNumber() + " checking in.\nCARGO AIRCRAFT REPORT: Tools, Equipment and ADVON team loaded. Deploying to FOB.\n");
 	}
 
 	@Override

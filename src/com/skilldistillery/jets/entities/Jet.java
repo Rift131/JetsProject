@@ -138,7 +138,7 @@ public abstract class Jet implements LaunchSortie {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Type: ").append(type).append(", Model: ").append(model).append(", Tail Number: ").append(tailNumber).append(", Speed (MPH): ").append(speed).append(", Mach: ").append(getSpeedInMach(speed)).append(", Range: ").append(range).append(", Price: ").append(money.format(getPrice()));
+		builder.append("Type: ").append(type).append(", Model: ").append(model).append(", Tail Number: ").append(tailNumber).append(",\nSpeed (MPH): ").append(speed).append(", Mach: ").append(getSpeedInMach(speed)).append(", Range: ").append(range).append(", Price: ").append(money.format(getPrice())).append(", PILOT ASSIGNED: ").append(getPilot());
 		return builder.toString();
 	}
 

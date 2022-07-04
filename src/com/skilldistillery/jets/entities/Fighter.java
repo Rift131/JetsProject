@@ -16,13 +16,13 @@ public class Fighter extends Jet implements StrikeSortie, SupportSortie {
 	@Override
 	public void strikeDelivered() {
 		// TODO Auto-generated method stub
-		System.out.println("FIGHTER " + getTailNumber() + " REPORT: Bombs away! Radar targets eliminated. The path is clear.\nFIGHTER " + getTailNumber() + " REPORT: Air superiority established. All enemy aircraft destroyed.");
+		System.out.println(getPilot() + ", aircraft " + getTailNumber() + " checking in. \nFIGHTER REPORT: Bombs away! Radar targets eliminated. The path is clear!\nAir superiority also established. All enemy aircraft destroyed.\n");
 	}
 
 	@Override
 	public void supportRendered() {
 		// TODO Auto-generated method stub
-		System.out.println("FIGHTER " + getTailNumber() + " REPORT: Providing escort for cargo aircraft.");
+		System.out.println(getPilot() + ", aircraft " + getTailNumber() + " checking in. \nFIGHTER REPORT: Providing escort for cargo aircraft.\n");
 	}
 
 	@Override
